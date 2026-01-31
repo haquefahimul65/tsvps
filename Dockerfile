@@ -1,5 +1,5 @@
 FROM ubuntu:22.04
-
+ENV DEBIAN_FRONTEND=noninteractive
 # Install Tailscale + SSH + monitoring tools (build-time for efficiency)
 RUN apt-get update && apt-get install -y \
     curl \
