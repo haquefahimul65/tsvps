@@ -32,10 +32,9 @@ set -e
 
 # Apply locale/env silently before services start
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 TERM=xterm-256color
-grep -q 'export LANG=en_US.UTF-8' ~/.bashrc 2>/dev/null  echo 'export LANG=en_US.UTF-8' >> ~/.bashrc
-grep -q 'export LC_ALL=en_US.UTF-8' ~/.bashrc 2>/dev/null  echo 'export LC_ALL=en_US.UTF-8' >> ~/.bashrc
+grep -q 'export LANG=en_US.UTF-8' ~/.bashrc 2>/dev/null || echo 'export LANG=en_US.UTF-8' >> ~/.bashrc
+grep -q 'export LC_ALL=en_US.UTF-8' ~/.bashrc 2>/dev/null || echo 'export LC_ALL=en_US.UTF-8' >> ~/.bashrc
 grep -q 'export TERM=xterm-256color' ~/.bashrc 2>/dev/null || echo 'export TERM=xterm-256color' >> ~/.bashrc
-
 ##################
 python3 -c 'import http.server,socketserver;http.server.SimpleHTTPRequestHandler.do_GET=lambda s:[s.send_response(200),s.send_header("Content-type","text/plain"),s.end_headers(),s.wfile.write(b"Hello World")][0];socketserver.TCPServer.allow_reuse_address=True;socketserver.TCPServer(("0.0.0.0",7860),http.server.SimpleHTTPRequestHandler).serve_forever()' &
 ####################
